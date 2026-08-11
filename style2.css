@@ -1,4 +1,4 @@
-/* report-page/style.css - Clean Modern Minimalist Version */
+/* report-page/style.css - Clean Modern Minimalist Version (With Tooltip) */
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
@@ -15,7 +15,7 @@
     --border-hover: #cbd5e1;            /* Darker Border on Hover */
     --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
     --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.12);
     --primary-color-subtle: rgba(37, 99, 235, 0.08);
     --header-height: 72px;
 }
@@ -213,6 +213,7 @@ body.phase-dark {
 .horizontal-panel {
     width: auto;
     height: 100vh;
+    min-width: 100vw; /* <-- 이 줄을 추가해 주세요 */
     padding: 120px 80px;
     flex-shrink: 0;
     display: flex;
@@ -421,16 +422,19 @@ h2::before {
 }
 
 /* --- Tech Stack Section (#tech-stack) --- */
+
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
     justify-content: flex-start;
-    max-width: 700px;
+    max-width: 1000px; /* 기존 750px에서 확장 또는 max-width 속성 자체를 삭제 */
+    padding-top: 10px;
 }
 
 .tech-badges span,
 .tech-item {
+    position: relative; /* 툴팁 기준점 */
     display: inline-flex;
     align-items: center;
     background: #f1f5f9;
@@ -441,7 +445,7 @@ h2::before {
     padding: 10px 20px;
     border-radius: 999px;
     border: 1px solid var(--border-color);
-    animation: none !important; /* Remove neon pulse */
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 
@@ -454,15 +458,71 @@ h2::before {
     box-shadow: var(--shadow-sm);
 }
 
-/* Tooltip & Icon rules (if present) */
 .tech-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     margin-right: 8px;
 }
 
+/* --- Tech Item Tooltip (Modern Clean Style) --- */
 .tooltip {
-    display: none; /* Hide cluttered tech tooltips in standard view */
+    display: block !important;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background-color: #ffffff;
+    color: var(--heading-color);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    width: max-content;
+    max-width: 260px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 0.825rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 50;
+    pointer-events: none;
+}
+
+/* 툴팁 하단 화살표 */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px;
+    border-style: solid;
+    border-color: var(--border-color) transparent transparent transparent;
+    z-index: -1;
+}
+
+/* 호버 시 툴팁 노출 */
+.tech-badges span:hover .tooltip,
+.tech-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* --- Personal Section (#personal) --- */
