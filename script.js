@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const horizontalWrapper = document.querySelector('.horizontal-wrapper');
+    const horizontalContent = document.querySelector('.horizontal-content');
     const horizontalPanels = gsap.utils.toArray('.horizontal-panel');
     const progressBar = document.querySelector('.progress-bar');
     const scrollHint = document.querySelector('.scroll-hint');
@@ -108,15 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.matchMedia({
         // Desktop view
         "(min-width: 769px)": function() {
-            if (horizontalWrapper && horizontalPanels.length) {
-                let horizontalScroll = gsap.to(horizontalPanels, {
-                    xPercent: -100 * (horizontalPanels.length - 1),
+            if (horizontalWrapper && horizontalContent && horizontalPanels.length) {
+                let horizontalScroll = gsap.to(horizontalContent, {
+                    x: () => `-${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}px`,
                     ease: "none",
                     scrollTrigger: {
                         trigger: horizontalWrapper,
                         pin: true,
                         scrub: 1,
-                        end: () => "+=" + (horizontalWrapper.offsetWidth * (horizontalPanels.length - 1)),
+                        end: () => `+=${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}`,
                         invalidateOnRefresh: true,
                         // Progress bar animation
                         onUpdate: self => {
