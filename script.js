@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = translations[lang][key];
             }
         });
-        
+
         // Update button states for accessibility and style
         if (lang === 'ko') {
             langKoBtn.classList.add('active');
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             langKoBtn.classList.remove('active');
             langKoBtn.setAttribute('aria-pressed', 'false');
         }
-        
+
         localStorage.setItem('preferredLanguage', lang);
     };
 
