@@ -1,99 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tech-Style Report | Global Site Renewal Project</title>
+    <title>Interactive Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="scanline-overlay"></div>
-    <div class="container">
-        <header class="header">
-            <div class="system-meta">
-                <p class="log-line">SESSION_ID: 20260811-CL4_KR</p>
-                <p class="log-line">
-                    STATUS: Connection established. Sys-version: 1.2.5
-                </p>
-            </div>
-            <h1 data-lang-key="main_title" class="h1-hidden"></h1>
-            <p data-lang-key="main_subtitle"></p>
+    <header class="main-header">
+        <div class="logo">
+            <a href="#home" data-lang-key="logo_text">Portfolio</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#about" data-lang-key="nav_about">About</a></li>
+                <li><a href="#projects" data-lang-key="nav_projects">Projects</a></li>
+                <li><a href="#skills" data-lang-key="nav_skills">Skills</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
             <div class="lang-switcher">
                 <button id="lang-ko" class="active" aria-pressed="true">KR</button>
                 <button id="lang-ja" aria-pressed="false">JP</button>
             </div>
-        </header>
-
-        <div class="section">
-            <h2 data-lang-key="sec1_title"></h2>
-            <p data-lang-key="sec1_p1"></p>
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
+    </header>
 
-        <div class="section">
-            <h2 data-lang-key="sec2_title"></h2>
-            <h3 data-lang-key="sec2_subtitle1"></h3>
-            <div class="badge-container">
-                <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Local
-                    WP</span><span class="badge">AI Tools</span>
+    <main class="container">
+        <section id="home" class="home-section">
+            <div class="system-meta">
+                <p class="log-line">SESSION_ID: 20260811-CL4_KR</p>
+                <p class="log-line">STATUS: Connection established. Portfolio v2.0 Active.</p>
             </div>
-            <p data-lang-key="sec2_p1"></p>
+            <h1 data-lang-key="main_title"></h1>
+            <p class="subtitle" data-lang-key="main_subtitle"></p>
+        </section>
 
-            <h3 data-lang-key="sec2_subtitle2"></h3>
-            <p data-lang-key="sec2_p2"></p>
-            <blockquote data-lang-key="sec2_quote"></blockquote>
-        </div>
+        <section id="about" class="section">
+            <h2 data-lang-key="about_title"></h2>
+            <p data-lang-key="about_p1"></p>
+            <p data-lang-key="about_p2"></p>
+        </section>
 
-        <div class="section">
-            <h2 data-lang-key="sec6_title"></h2>
-            <div class="timeline">
-                <div class="log-entry">
-                    <h3 data-lang-key="log1_title"></h3>
-                    <p data-lang-key="log1_p1"></p>
-                    <div class="badge-container">
-                        <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Manual
-                            Coding</span>
+        <section id="projects" class="section">
+            <h2 data-lang-key="projects_title"></h2>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type" data-lang-key="project1_type"></span>
+                        <h3 data-lang-key="project1_title"></h3>
+                    </div>
+                    <div class="project-body">
+                        <p data-lang-key="project1_desc"></p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="badge-container">
+                            <span class="badge">WordPress</span>
+                            <span class="badge">CSS3</span>
+                            <span class="badge">JS</span>
+                            <span class="badge">AI-Assisted</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="log-entry">
-                    <h3 data-lang-key="log2_title"></h3>
-                    <p data-lang-key="log2_p1"></p>
-                    <blockquote data-lang-key="log2_quote"></blockquote>
-                </div>
-
-                <div class="log-entry">
-                    <h3 data-lang-key="log3_title"></h3>
-                    <p data-lang-key="log3_p1"></p>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type" data-lang-key="project2_type"></span>
+                        <h3 data-lang-key="project2_title"></h3>
+                    </div>
+                    <div class="project-body">
+                        <p data-lang-key="project2_desc"></p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="badge-container">
+                            <span class="badge">Fieldwork</span>
+                            <span class="badge">UX Research</span>
+                            <span class="badge">Data Analysis</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2 data-lang-key="sec8_title"></h2>
-            <p data-lang-key="sec8_p1"></p>
-            <p data-lang-key="sec8_p2"></p>
-        </div>
-
-        <div class="section">
-            <h2 data-lang-key="sec3_title"></h2>
-            <p data-lang-key="sec3_p1"></p>
-            <ul>
-                <li data-lang-key="research1"></li>
-                <li data-lang-key="research2"></li>
-            </ul>
-            <p data-lang-key="sec3_p2"></p>
-        </div>
-
-        <div class="section">
-            <h2 data-lang-key="sec4_title"></h2>
-            <p data-lang-key="sec4_p1"></p>
+        <section id="skills" class="section">
+            <h2 data-lang-key="skills_title"></h2>
             <div class="skill-card-container">
                 <div class="skill-card">
                     <h4 data-lang-key="skill1_title"></h4>
@@ -112,19 +111,15 @@
                     <p data-lang-key="skill4_desc"></p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2 data-lang-key="sec5_title"></h2>
-            <p data-lang-key="sec5_p1"></p>
-        </div>
 
-        <footer class="footer">
-            <p data-lang-key="footer_text"></p>
-        </footer>
-    </div>
+    </main>
+
+    <footer class="footer">
+        <p data-lang-key="footer_text"></p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
