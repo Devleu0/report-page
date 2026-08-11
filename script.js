@@ -193,52 +193,47 @@ document.addEventListener('DOMContentLoaded', () => {
             if (horizontalWrapper && horizontalContent && horizontalPanels.length) {
                 const panelCount = horizontalPanels.length;
 
-                // let horizontalScroll = gsap.to(horizontalContent, {
-                //     x: () => `-${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}px`,
-                //     ease: "none",
-                //     scrollTrigger: {
-                //         trigger: horizontalWrapper,
-                //         pin: true,
-                //         scrub: 1,
-                //         end: () => `+=${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}`,
-                //         invalidateOnRefresh: true,
-                //         // 2-1) Magnetic snap: an overshoot into the next panel
-                //         // always settles with that panel centered in view,
-                //         // giving each full-screen effect a clean beat to land on.
-                //         snap: {
-                //             snapTo: 1 / (panelCount - 1),
-                //             duration: { min: 0.2, max: 0.5 },
-                //             delay: 0.05,
-                //             ease: "power1.inOut"
-                //         },
-                //         // Progress bar animation + light scanline jitter while scrubbing
-                //         onUpdate: self => {
-                //             if (progressBar) {
-                //                 gsap.to(progressBar, { width: self.progress * 100 + "%", duration: 0.1, overwrite: true });
-                //             }
-                //         },
-                //         // 5) Entering the horizontal track: reboot flash +
-                //         //    switch the whole page into its "CRT / dark phase" mode.
-                //         onEnter: () => {
-                //             if (scrollHint) {
-                //                 setTimeout(() => scrollHint.classList.add('fade-out'), 2000);
-                //             }
-                //             document.body.classList.add('crt-active', 'phase-dark');
-                //             playStrobe();
-                //         },
-                //         onEnterBack: () => {
-                //             document.body.classList.add('crt-active', 'phase-dark');
-                //             playStrobe();
-                //         },
-                //         onLeave: () => {
-                //             document.body.classList.remove('crt-active', 'phase-dark');
-                //         },
-                //         onLeaveBack: () => {
-                //             document.body.classList.remove('crt-active', 'phase-dark');
-                //             if (scrollHint) scrollHint.classList.remove('fade-out');
-                //         }
-                //     }
-                // });
+                let horizontalScroll = gsap.to(horizontalContent, {
+                    x: () => `-${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}px`,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: horizontalWrapper,
+                        pin: true,
+                        scrub: 1,
+                        end: () => `+=${horizontalContent.scrollWidth - horizontalWrapper.offsetWidth}`,
+                        invalidateOnRefresh: true,
+                        // 2-1) Magnetic snap: an overshoot into the next panel
+                        // always settles with that panel centered in view,
+                        // giving each full-screen effect a clean beat to land on.
+
+                        // Progress bar animation + light scanline jitter while scrubbing
+                        onUpdate: self => {
+                            if (progressBar) {
+                                gsap.to(progressBar, { width: self.progress * 100 + "%", duration: 0.1, overwrite: true });
+                            }
+                        },
+                        // 5) Entering the horizontal track: reboot flash +
+                        //    switch the whole page into its "CRT / dark phase" mode.
+                        onEnter: () => {
+                            if (scrollHint) {
+                                setTimeout(() => scrollHint.classList.add('fade-out'), 2000);
+                            }
+                            document.body.classList.add('crt-active', 'phase-dark');
+                            playStrobe();
+                        },
+                        onEnterBack: () => {
+                            document.body.classList.add('crt-active', 'phase-dark');
+                            playStrobe();
+                        },
+                        onLeave: () => {
+                            document.body.classList.remove('crt-active', 'phase-dark');
+                        },
+                        onLeaveBack: () => {
+                            document.body.classList.remove('crt-active', 'phase-dark');
+                            if (scrollHint) scrollHint.classList.remove('fade-out');
+                        }
+                    }
+                });
 
                 // ScrollSpy for GNB + per-panel impact effects, synced to the
                 // exact scroll position where each panel is centered (2-1).
