@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.main-nav a');
     const translations = {
         ko: {
-            logo_text: "업무 보고서",
+            logo_text: "전남대 AI",
             nav_overview: "개요",
             nav_workflow: "업무 일지",
             nav_takeaways: "주요 경험",
             nav_tech: "기술 스택",
             hero_eyebrow: "2026 SUMMER INTERNSHIP",
             main_title: "인턴십 업무 보고서",
-            hero_meta: "컴퓨터공학과 4학년 · Global Innovation Handle 웹 개발 인턴 · 2026.06 – 2026.07",
+            hero_meta: "AI학부 4학년 · Global Innovation Handle 웹 개발 인턴 · 2026.06 – 2026.07",
             main_subtitle: "'Global Human Bridge' 웹사이트 리뉴얼 프로젝트에 참여하며 배우고 느낀 점을 정리했습니다.",
             overview_title: "인턴십 개요",
             overview_p1: "본 보고서는 Global Innovation Handle 부서에서 진행한 인턴십의 업무 내용을 정리한 것입니다. 주된 업무는 자회사 'Global Human Bridge'의 노후화된 웹사이트를 리뉴얼하는 프로젝트였습니다. 개발에는 WordPress 플랫폼이 활용되었으며, VS Code를 사용하여 코딩을 진행했습니다.",
@@ -51,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_text: "&copy; 2026 Internship Report for Global Innovation Handle."
         },
         ja: {
-            logo_text: "業務レポート",
+            logo_text: "全南大学 AI",
             nav_overview: "概要",
             nav_workflow: "業務日誌",
             nav_takeaways: "主な経験",
             nav_tech: "技術スタック",
             hero_eyebrow: "2026年 サマーインターンシップ",
-            main_title: "インターンシップ業務レポート",
-            hero_meta: "情報工学科 4年生 · Global Innovation Handle ウェブ開発インターン · 2026.06 – 2026.07",
+            main_title: "インターンシップ",
+            hero_meta: "AI学部 4年生 · Global Innovation Handle ウェブ開発インターン · 2026.06 – 2026.07",
             main_subtitle: "「Global Human Bridge」のウェブサイトリニューアルプロジェクトに参加して学び、感じたことをまとめました。",
             overview_title: "インターンシップ概要",
             overview_p1: "本レポートは、Global Innovation Handle部署で行われたインターンシップの業務内容をまとめたものです。主な業務は、子会社「Global Human Bridge」の老朽化したウェブサイトをリニューアルするプロジェクトでした。開発にはWordPressプラットフォームが活用され、VS Codeを使用してコーディングを進めました。",
