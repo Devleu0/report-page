@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const langKoBtn = document.getElementById('lang-ko');
+    const langJaBtn = document.getElementById('lang-ja');
+
     // --- Functions ---
     const changeLanguage = (lang) => {
         document.documentElement.lang = lang;
@@ -96,30 +99,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = translations[lang][key];
             }
         });
-        document.querySelector('.lang-switcher button.active').classList.remove('active');
-        document.querySelector(`#lang-${lang}`).classList.add('active');
+        
+        // Update button states for accessibility and style
+        if (lang === 'ko') {
+            langKoBtn.classList.add('active');
+            langKoBtn.setAttribute('aria-pressed', 'true');
+            langJaBtn.classList.remove('active');
+            langJaBtn.setAttribute('aria-pressed', 'false');
+        } else {
+            langJaBtn.classList.add('active');
+            langJaBtn.setAttribute('aria-pressed', 'true');
+            langKoBtn.classList.remove('active');
+            langKoBtn.setAttribute('aria-pressed', 'false');
+        }
+        
         localStorage.setItem('preferredLanguage', lang);
     };
 
-    // --- Event Listeners and Initial Load ---
-    const sections = document.querySelectorAll('.section');
+    // --- Animation Observer ---
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = `fade-in-up 1s ${entry.target.dataset.delay || '0'}s forwards`;
+                // Add a staggered delay for each observed element
+                entry.target.style.animationDelay = `${index * 100}ms`;
+                entry.target.classList.add('fade-in-up-init');
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
-    sections.forEach((section, index) => {
-        section.dataset.delay = index * 0.1;
+    // Observe all elements with the .section class
+    document.querySelectorAll('.section').forEach(section => {
         observer.observe(section);
     });
 
-    document.getElementById('lang-ko').addEventListener('click', () => changeLanguage('ko'));
-    document.getElementById('lang-ja').addEventListener('click', () => changeLanguage('ja'));
+    // --- Event Listeners ---
+    langKoBtn.addEventListener('click', () => changeLanguage('ko'));
+    langJaBtn.addEventListener('click', () => changeLanguage('ja'));
 
+    // --- Initial Load ---
     const preferredLanguage = localStorage.getItem('preferredLanguage') || 'ko';
     changeLanguage(preferredLanguage);
 });
