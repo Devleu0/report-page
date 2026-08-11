@@ -1,182 +1,118 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web開発実習報告 | グローバル企業Webサイトリニューアル</title>
-  <style>
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
-      line-height: 1.8;
-      color: #333;
-      background-color: #fdfdfd;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 30px;
-      background-color: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    h1, h2, h3 {
-      font-weight: 600;
-      color: #2c3e50;
-      line-height: 1.4;
-    }
-    h1 {
-      font-size: 2em;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 1.6em;
-      margin-top: 50px;
-      margin-bottom: 20px;
-      border-left: 4px solid #3498db;
-      padding-left: 10px;
-    }
-    h3 {
-      font-size: 1.25em;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      color: #2980b9;
-    }
-    p, li {
-      font-size: 1.05em;
-    }
-    ul, ol {
-      padding-left: 25px;
-      margin-bottom: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    blockquote {
-      margin: 25px 0;
-      padding: 20px;
-      background-color: #ecf0f1;
-      border-left: 5px solid #3498db;
-      font-style: italic;
-      color: #555;
-      border-radius: 0 8px 8px 0;
-    }
-    .badge {
-      display: inline-block;
-      padding: 5px 12px;
-      margin: 3px;
-      background-color: #e0eaf0;
-      color: #34495e;
-      border-radius: 15px;
-      font-size: 0.9em;
-      font-weight: 500;
-    }
-    strong, b {
-      color: #c0392b;
-      font-weight: 600;
-    }
-    .section-break {
-        border: 0;
-        height: 1px;
-        background: #ddd;
-        margin: 50px 0;
-    }
-  </style>
+  <title>Tech-Style Report | Global Site Renewal Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<div class="lang-switcher">
+  <button id="lang-ko" class="active">KR</button>
+  <button id="lang-ja">JP</button>
+</div>
+
 <div class="container">
 
-    <h1>グローバル企業Webサイトリニューアル及び日本消費文化調査</h1>
-    <p>こんにちは。この度、「Global Human Bridge」という企業でWeb開発インターンシップを経験しました。古いWebサイトのリニューアルというミッションに取り組む中で、多くのことを学びましたので、その経験を共有したいと思います。</p>
+    <header class="header">
+        <h1 data-lang-key="main_title"></h1>
+        <p data-lang-key="main_subtitle"></p>
+    </header>
 
-    <h2>1. 実習概要とプロジェクト背景</h2>
-    <p>
-      本実習は、グローバル企業「Global Innovation Handle」の傘下に属する子会社「Global Human Bridge」における老朽化したWebページの全面的リニューアル作業を中心として実施されました。ブランド価値を高め、ユーザー体験（UX）およびアクセシビリティを最大化することが最優先課題でした。
-    </p>
+    <div class="section">
+        <h2 data-lang-key="sec1_title"></h2>
+        <p data-lang-key="sec1_p1"></p>
+    </div>
 
-    <h3>使用技術</h3>
-    <p>
-        <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Local WP</span><span class="badge">AI Tools</span>
-    </p>
+    <div class="section">
+        <h2 data-lang-key="sec2_title"></h2>
+        <h3 data-lang-key="sec2_subtitle1"></h3>
+        <div class="badge-container">
+            <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Local WP</span><span class="badge">AI Tools</span>
+        </div>
+        <p data-lang-key="sec2_p1"></p>
+        
+        <h3 data-lang-key="sec2_subtitle2"></h3>
+        <p data-lang-key="sec2_p2"></p>
+        <blockquote data-lang-key="sec2_quote"></blockquote>
+    </div>
     
-    <p>
-      Webサイト構築の基盤には<b>WordPress</b>、コードエディタには<b>VS Code</b>を採用しました。
-    </p>
-    <blockquote>
-        <b>感じたこと：</b> プロジェクトの初期段階では、あえて「AIツールを使用せず自らの手動コーディング能力をテスト・検証すること」に注力しました。これにより、WordPressテーマの内部構造や標準CSSレイアウトに対する深い基礎的理解を確実に構築することができました。やはり基礎が大事だと改めて感じました。
-    </blockquote>
+    <div class="section">
+        <h2 data-lang-key="sec6_title"></h2>
+        
+        <div class="log-entry">
+            <h3 data-lang-key="log1_title"></h3>
+            <p data-lang-key="log1_p1"></p>
+            <div class="badge-container">
+                <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Manual Coding</span>
+            </div>
+        </div>
 
-    <hr class="section-break">
+        <div class="log-entry">
+            <h3 data-lang-key="log2_title"></h3>
+            <p data-lang-key="log2_p1"></p>
+            <blockquote data-lang-key="log2_quote"></blockquote>
+        </div>
 
-    <h2>2. メインWebページの試行錯誤とレイアウト統合</h2>
-    <p>
-      リニューアル作業の推進にあたり、方向性の異なる2つのWebデザイン案を制作し、担当者に提示しました。提示後、双方のデザインに対する詳細な長所・短所のフィードバックを受領し、<b>「双方の長所を取り合わせ、1つの洗練された統合ページとして再開発すること」</b>というクライアント要請を頂きました。
-    </p>
-    <ul>
-        <li><b>デザインA案（ビジュアル重視）:</b> モダンで洗練されたヒーローセクションと動的ビジュアルが長所でしたが、下部コンテンツへの導線が弱いという短所がありました。</li>
-        <li><b>デザインB案（構造・情報重視）:</b> 高い視認性とカテゴリ分けされた明確な情報構造が長所でしたが、デザインが比較的硬いという指摘を受けました。</li>
-    </ul>
-
-    <h3>AI導入の不具合とレスポンシブWebコードの完全再構築</h3>
-    <p>
-      2案のメリットを融合する作業において、作業の効率化を図るために<b>AIツールを活用したコードの自動合成・組み換え</b>を試みました。しかし、AIツールによって生成されたコードを適用した際、画面サイズに応じたレスポンシブ設計が意図通りに動作せず、表示崩れが発生する問題が生じました。
-    </p>
-    <blockquote>
-        <b>大変だった点：</b> 正直、この時はかなり焦りました。AIが生成したコードは一見完璧に見えましたが、実際に適用してみるとレイアウトが崩れ、どこから手をつけていいか分からず途方に暮れました。プロジェクトが遅延するのではないかと、大きなプレッシャーを感じました。
-    </blockquote>
-    <p>
-      部分的な修復では根本的解決が困難であったため、<b>自動生成されたコードを破棄し、VS Code上で一から手動でコードを再作成する決断</b>を行いました。
-    </p>
-    <blockquote>
-        <b>感じたこと：</b> 時間はかかりましたが、自分の手でコードを再構築することで、レスポンシブデザインの仕組みをより深く理解でき、大きな自信につながりました。この経験は、今後の開発者としてのキャリアにおいて大きな財産になったと感じています。
-    </blockquote>
-    <p>
-      手動による完全リライトを実施した結果、メディアクエリの構造をシンプルかつ厳密に再設計することができ、あらゆる端末においてスムーズに動作する堅牢なレスポンシB-Webデザインを実現しました。
-    </p>
+        <div class="log-entry">
+            <h3 data-lang-key="log3_title"></h3>
+            <p data-lang-key="log3_p1"></p>
+        </div>
+    </div>
     
-    <h3>インデックス・ディレクトリページの自律企画とLocal WP環境でのデバッグ</h3>
-    <p>
-      共有検証サーバー上では即座にテスト・改変を行うことが困難であったインデックスページ等は、PCローカル環境に<b>「Local WP」</b>でWordpressテスト環境をゼロから構築することで解決しました。これにより、安全かつ迅速な改変・プレビュー環境を整備し、自律的に企画・設計を進めることができました。
-    </p>
+    <div class="section">
+        <h2 data-lang-key="sec8_title"></h2>
+        <p data-lang-key="sec8_p1"></p>
+        <p data-lang-key="sec8_p2"></p>
+    </div>
+    
+    <div class="section">
+        <h2 data-lang-key="sec3_title"></h2>
+        <p data-lang-key="sec3_p1"></p>
+        <ul>
+            <li data-lang-key="research1"></li>
+            <li data-lang-key="research2"></li>
+        </ul>
+        <p data-lang-key="sec3_p2"></p>
+    </div>
 
-    <hr class="section-break">
+    <div class="section">
+        <h2 data-lang-key="sec4_title"></h2>
+        <p data-lang-key="sec4_p1"></p>
+        <div class="skill-card-container">
+            <div class="skill-card">
+                <h4 data-lang-key="skill1_title"></h4>
+                <p data-lang-key="skill1_desc"></p>
+            </div>
+            <div class="skill-card">
+                <h4 data-lang-key="skill2_title"></h4>
+                <p data-lang-key="skill2_desc"></p>
+            </div>
+            <div class="skill-card">
+                <h4 data-lang-key="skill3_title"></h4>
+                <p data-lang-key="skill3_desc"></p>
+            </div>
+            <div class="skill-card">
+                <h4 data-lang-key="skill4_title"></h4>
+                <p data-lang-key="skill4_desc"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 data-lang-key="sec5_title"></h2>
+        <p data-lang-key="sec5_p1"></p>
+    </div>
 
-    <h2>3. 日本の消費文化及びサブカルチャー現場調査</h2>
-    <p>
-      Web開発プロジェクトの知見を広げるため、<b>新宿および秋葉原エリアにおける現地フィールドワーク</b>を実施しました。
-    </p>
-    <h3>新宿リユース店舗と秋葉原サブカルチャー巡回</h3>
-    <p>
-      新宿のブックオフでは、膨大な中古製品がカテゴリごとに高度に整理されており、欲しい情報（商品）へストレスなくアクセスできる構造が確立されていることに感銘を受けました。また、秋葉原では、各店舗がターゲット層に特化した陳列・演出を行っており、日本のサブカルチャーの力強さを直接体験しました。
-    </p>
-    <blockquote>
-        <b>感じたこと：</b> 開発だけでなく、実際に街に出てユーザーの行動を観察した経験は非常に新鮮でした。特に秋葉原の熱気はすごかったです。Webサイトを作る上でも、こうしたユーザーの心理や文化を理解することがいかに重要かを痛感しました。「膨大な情報を整理し、ユーザーの関心に合わせた最適な視覚的導線を構築する」というWebデザインの根本原理と共通するものを、日本の消費文化の中に発見できた気がします。
-    </blockquote>
+    <footer class="footer">
+        <p data-lang-key="footer_text"></p>
+    </footer>
 
-    <hr class="section-break">
-
-    <h2>4. 総合成果と自己評価</h2>
-    <p>本インターンシップを通じて得られた主な成果とスキル習得状況です。</p>
-    <ul>
-        <li><b>WordPress・ローカル開発:</b> Local WP環境の構築、テーマファイル内部構造の理解とカスタマイズ力を獲得。</li>
-        <li><b>コーディング・トラブル対応:</b> AI生成コードによるレスポンシブ不全の原因特定と手動完全再構築を完遂。</li>
-        <li><b>開発手法（ハイブリッド化）:</b> AIに頼らない基礎能力の重要性を認識し、AIを適切に活用する指針を確立。</li>
-        <li><b>UI/UX・自律デザイン:</b> シアンのないページの自律企画。情報構造（IA）とユーザー動線を意識したレイアウト導出。</li>
-    </ul>
-
-    <h3>総括及び今後の展望</h3>
-    <p>
-      本プロジェクトでは、クライアントの要件を満たすWebリニューアルを完遂することができました。開発プロセスにおける一連の体験は、技術的適応力と問題解決能力を飛躍的に向上させる貴重な糧となりました。
-    </p>
-    <p>
-      短い期間でしたが、本当に多くのことを学び、成長できたインターンシップでした。今後は本実習で得た経験を活かし、構造的思考に基づいたWebデザイン・フロントエンド開発にさらに磨きをかけ、高品質なWebサービスの創出に貢献していく所存です。最後まで読んでいただき、ありがとうございました。
-    </p>
 </div>
+
 
 </body>
 </html>
