@@ -321,35 +321,95 @@ h2::before {
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem 1.5rem; /* More vertical gap */
     justify-content: center;
+    align-items: flex-start;
 }
 
-.tech-badges span {
-    display: inline-flex;
+.tech-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--card-background);
-    color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: 1px solid var(--primary-color-subtle);
+    width: 100px; /* Give a fixed width */
     animation: neonPulse 2.5s infinite ease-in-out;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.tech-badges span:hover {
-    transform: translateY(-3px);
+.tech-item:hover {
+    transform: translateY(-5px);
+    animation-play-state: paused; /* Pause pulse on hover for better interaction */
+}
+
+.tech-icon {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    background: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color-subtle);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
     border-color: var(--primary-color);
     box-shadow: 0 0 15px var(--glow-color);
 }
 
-.tech-badges span:nth-child(2) { animation-delay: 0.2s; }
-.tech-badges span:nth-child(3) { animation-delay: 0.4s; }
-.tech-badges span:nth-child(4) { animation-delay: 0.6s; }
-.tech-badges span:nth-child(5) { animation-delay: 0.8s; }
-.tech-badges span:nth-child(6) { animation-delay: 1.0s; }
-.tech-badges span:nth-child(7) { animation-delay: 1.2s; }
+.tech-icon svg {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.tech-name {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 115%; /* Position above the tech-item */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    width: 250px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    pointer-events: none; /* Make sure it doesn't block hover on the icon */
+}
+
+.tech-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Animation Delays */
+.tech-item:nth-child(2) { animation-delay: 0.2s; }
+.tech-item:nth-child(3) { animation-delay: 0.4s; }
+.tech-item:nth-child(4) { animation-delay: 0.6s; }
+.tech-item:nth-child(5) { animation-delay: 0.8s; }
+.tech-item:nth-child(6) { animation-delay: 1.0s; }
+.tech-item:nth-child(7) { animation-delay: 1.2s; }
+
 
 
 /* --- Culture Badges (Japan-life section) --- */
