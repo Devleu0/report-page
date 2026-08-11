@@ -1,468 +1,181 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学生Web開発インターンシップ 総合成果報告書</title>
-<style>
-  /* Reset & Global Styles */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-    color: #1a202c;
-    line-height: 1.6;
-    font-size: 15px;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f6f9;
-  }
-
-  .report-container {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  }
-
-  /* Header Section */
-  .header-container {
-    border-bottom: 3px solid #2b6cb0;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-  }
-
-  .report-tag {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #2b6cb0;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-  }
-
-  .report-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #1a365d;
-    margin: 0 0 8px 0;
-    line-height: 1.3;
-  }
-
-  .report-subtitle {
-    font-size: 1.1rem;
-    color: #4a5568;
-    margin: 0;
-  }
-
-  /* Metadata Card */
-  .meta-card {
-    display: table;
-    width: 100%;
-    background-color: #f0f4f8;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin-bottom: 25px;
-  }
-
-  .meta-row {
-    display: table-row;
-  }
-
-  .meta-cell {
-    display: table-cell;
-    padding: 5px 8px;
-    font-size: 0.9rem;
-    vertical-align: middle;
-  }
-
-  .meta-label {
-    font-weight: bold;
-    color: #2c5282;
-    width: 15%;
-  }
-
-  .meta-value {
-    color: #2d3748;
-    width: 35%;
-  }
-
-  /* Section Headings */
-  h2 {
-    font-size: 1.3rem;
-    color: #1a365d;
-    background-color: #edf2f7;
-    border-left: 5px solid #2b6cb0;
-    padding: 8px 12px;
-    margin: 30px 0 15px 0;
-    border-radius: 0 4px 4px 0;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    color: #2c5282;
-    margin: 20px 0 8px 0;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 4px;
-  }
-
-  p {
-    margin: 0 0 12px 0;
-    text-align: justify;
-  }
-
-  ul, ol {
-    margin: 0 0 12px 0;
-    padding-left: 22px;
-  }
-
-  li {
-    margin-bottom: 5px;
-  }
-
-  /* Callout Boxes */
-  .callout-box {
-    background-color: #ebf8ff;
-    border-left: 4px solid #3182ce;
-    padding: 12px 16px;
-    margin: 15px 0;
-    font-size: 0.95rem;
-    border-radius: 0 6px 6px 0;
-  }
-
-  .callout-alert {
-    background-color: #fff5f5;
-    border-left: 4px solid #e53e3e;
-    padding: 12px 16px;
-    margin: 15px 0;
-    font-size: 0.95rem;
-    border-radius: 0 6px 6px 0;
-  }
-
-  .callout-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  .callout-box .callout-title {
-    color: #2b6cb0;
-  }
-
-  .callout-alert .callout-title {
-    color: #c53030;
-  }
-
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0 20px 0;
-    font-size: 0.9rem;
-  }
-
-  th, td {
-    border: 1px solid #cbd5e0;
-    padding: 10px 12px;
-    text-align: left;
-  }
-
-  th {
-    background-color: #2b6cb0;
-    color: #ffffff;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f7fafc;
-  }
-
-  /* Badges & Timeline */
-  .badge {
-    display: inline-block;
-    background-color: #e2e8f0;
-    color: #2d3748;
-    font-size: 0.8rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 5px;
-  }
-
-  .timeline-list {
-    list-style: none;
-    padding-left: 0;
-  }
-
-  .timeline-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-  }
-
-  .timeline-list li::before {
-    content: "■";
-    position: absolute;
-    left: 0;
-    color: #3182ce;
-    font-size: 0.8rem;
-    top: 1px;
-  }
-
-  /* Footer & Signatures */
-  .footer-signature {
-    margin-top: 40px;
-    border-top: 2px solid #cbd5e0;
-    padding-top: 15px;
-    display: table;
-    width: 100%;
-  }
-
-  .signature-cell {
-    display: table-cell;
-    width: 50%;
-    font-size: 0.9rem;
-    color: #4a5568;
-    vertical-align: top;
-  }
-
-  .signature-right {
-    text-align: right;
-  }
-
-  /* Print Styles */
-  @media print {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web開発実習報告 | グローバル企業Webサイトリニューアル</title>
+  <style>
     body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background-color: #fdfdfd;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
       background-color: #ffffff;
-      padding: 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    .report-container {
-      box-shadow: none;
-      padding: 0;
-      max-width: 100%;
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #2c3e50;
+      line-height: 1.4;
     }
-    .page-break {
-      page-break-before: always;
+    h1 {
+      font-size: 2em;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
-  }
-</style>
+    h2 {
+      font-size: 1.6em;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+    }
+    h3 {
+      font-size: 1.25em;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #2980b9;
+    }
+    p, li {
+      font-size: 1.05em;
+    }
+    ul, ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    blockquote {
+      margin: 25px 0;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-left: 5px solid #3498db;
+      font-style: italic;
+      color: #555;
+      border-radius: 0 8px 8px 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      margin: 3px;
+      background-color: #e0eaf0;
+      color: #34495e;
+      border-radius: 15px;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+    strong, b {
+      color: #c0392b;
+      font-weight: 600;
+    }
+    .section-break {
+        border: 0;
+        height: 1px;
+        background: #ddd;
+        margin: 50px 0;
+    }
+  </style>
 </head>
 <body>
 
-<div class="report-container">
+<div class="container">
 
-  <!-- Header Section -->
-  <div class="header-container">
-    <div class="report-tag">STUDENT INTERNSHIP & FIELD RESEARCH REPORT | Web開発実習報告</div>
-    <h1 class="report-title">グローバル企業Webサイトリニューアル及び日本消費文化調査</h1>
-    <div class="report-subtitle">Global Human Bridge Web Renewal Project & Japanese Subculture Field Study</div>
-  </div>
+    <h1>グローバル企業Webサイトリニューアル及び日本消費文化調査</h1>
+    <p>こんにちは。この度、「Global Human Bridge」という企業でWeb開発インターンシップを経験しました。古いWebサイトのリニューアルというミッションに取り組む中で、多くのことを学びましたので、その経験を共有したいと思います。</p>
 
-  <!-- Metadata Card -->
-  <div class="meta-card">
-    <div class="meta-row">
-      <div class="meta-cell meta-label">実習生:</div>
-      <div class="meta-cell meta-value">Web開発専攻 インターン生</div>
-      <div class="meta-cell meta-label">対象企業:</div>
-      <div class="meta-cell meta-value">Global Human Bridge (Global Innovation Handle子会社)</div>
-    </div>
-    <div class="meta-row">
-      <div class="meta-cell meta-label">使用技術:</div>
-      <div class="meta-cell meta-value"><span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Local WP</span><span class="badge">AI Tools</span></div>
-      <div class="meta-cell meta-label">指導・担当:</div>
-      <div class="meta-cell meta-value">Global Human Bridge 開発担当者</div>
-    </div>
-  </div>
-
-  <!-- SECTION 1 -->
-  <h2>1. 実習概要とプロジェクト背景</h2>
-
-  <h3>1.1 企業・プロジェクトの目的</h3>
-  <p>
-    本実習は、グローバル企業「Global Innovation Handle」の傘下に属する子会社「Global Human Bridge」における老朽化したWebページの全面的なリニューアル作業を中心として実施された。Global Human Bridgeのブランド価値を高め、ユーザー体験（UX）およびアクセシビリティを最大化することが本プロジェクトの最優先課題である。実習冒頭には担当者より会社全体のビジョンや事業構造に関する詳細なオリエンテーションを受け、開発要件の把握に努めた。
-  </p>
-
-  <h3>1.2 プラットフォームの選定と開発基本方針</h3>
-  <p>
-    Webサイト構築の基盤には、拡張性と保守管理の利便性に長けた<b>WordPress（ワードプレス）</b>プラットフォームを活用した。コードエディタには<b>VS Code（Visual Studio Code）</b>を採用し、精密なコーディングによって実装効率とUIデザインの完成度を同時に引き上げる体制を整えた。
-  </p>
-  <p>
-    本プロジェクトの初期段階においては、あえて<b>「AIツールを使用せず自らの手動コーディング能力をテスト・検証すること」</b>に注力した。これにより、WordPressテーマの内部構造や標準CSSレイアウトに対する深い基礎的理解を確実に構築することができた。また、制作の全過程を通じて担当者による定期的な検収とフィードバックの反映を繰り返し、クライアントの要件を厳密に満たす成果物の完成を目指した。
-  </p>
-
-  <!-- SECTION 2 -->
-  <h2>2. メインWebページの試行錯誤とレイアウト統合</h2>
-
-  <h3>2.1 2案のプロトタイプ提示とメリットの抽出</h3>
-  <p>
-    リニューアル作業の推進にあたり、方向性の異なる2つのWebデザイン案を制作し、担当者に提示した。提示後、双方のデザインに対する詳細な長所・短所のフィードバックを受領した。
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 20%;">比較項目</th>
-        <th style="width: 40%;">デザイン A案（ビジュアル重視）</th>
-        <th style="width: 40%;">デザイン B案（構造・情報重視）</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>評価された長所</b></td>
-        <td>モダンで洗練されたヒーローセクションと動的ビジュアル</td>
-        <td>高い視認性とカテゴリ分けされた明確な情報構造</td>
-      </tr>
-      <tr>
-        <td><b>改善すべき短所</b></td>
-        <td>下部コンテンツへの導線が弱く情報密度が低い</td>
-        <td>デザインが比較的硬く、ブランドの革新性が伝わりにくい</td>
-      </tr>
-      <tr>
-        <td><b>クライアント要請</b></td>
-        <td colspan="2"><b>「双方の長所を取り合わせ、1つの洗練された統合ページとして再開発すること」</b></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout-box">
-    <div class="callout-title">【開発統合における核心アプローチ】</div>
-    <p style="margin:0;">
-      A案が持つ魅力的なビジュアルプレゼンテーションと、B案が持つ直感的なコンテンツアクセス性能を高度に融合させ、ユーザーの回遊性とブランド価値を同時に高める1ページの総合レイアウトを導出することを目標に設定した。
+    <h2>1. 実習概要とプロジェクト背景</h2>
+    <p>
+      本実習は、グローバル企業「Global Innovation Handle」の傘下に属する子会社「Global Human Bridge」における老朽化したWebページの全面的リニューアル作業を中心として実施されました。ブランド価値を高め、ユーザー体験（UX）およびアクセシビリティを最大化することが最優先課題でした。
     </p>
-  </div>
 
-  <div class="page-break"></div>
-
-  <h3>2.2 AI導入の不具合とレスポンシブWebコードの完全再構築</h3>
-  <p>
-    2案のメリットを融合する作業において、作業の効率化を図るために<b>AIツールを活用したコードの自動合成・組み換え</b>を試みた。しかし、AIツールによって生成されたコードを適用した際、画面サイズに応じたブレイクポイント処理やレイアウトの追従機能（レスポンシブ設計）が意図通りに動作せず、表示崩れが発生する問題が生じた。
-  </p>
-
-  <div class="callout-alert">
-    <div class="callout-title">【トラブルシューティング：レスポンシブ崩れへの対処】</div>
-    <p style="margin:0;">
-      AIが提示したスタイル規則は既存のWordPressテーマCSSと複雑に干渉しており、部分的な修復では根本的解決が困難であった。そのため、<b>自動生成されたコードを破棄し、VS Code上で一から手動でコードを再作成する決断</b>を行った。
+    <h3>使用技術</h3>
+    <p>
+        <span class="badge">WordPress</span><span class="badge">VS Code</span><span class="badge">Local WP</span><span class="badge">AI Tools</span>
     </p>
-  </div>
+    
+    <p>
+      Webサイト構築の基盤には<b>WordPress</b>、コードエディタには<b>VS Code</b>を採用しました。
+    </p>
+    <blockquote>
+        <b>感じたこと：</b> プロジェクトの初期段階では、あえて「AIツールを使用せず自らの手動コーディング能力をテスト・検証すること」に注力しました。これにより、WordPressテーマの内部構造や標準CSSレイアウトに対する深い基礎的理解を確実に構築することができました。やはり基礎が大事だと改めて感じました。
+    </blockquote>
 
-  <p>
-    手動による完全リライトを実施した結果、メディアクエリの構造をシンプルかつ厳密に再設計することができ、あらゆる端末（PC、タブレット、スマートフォン）においてスムーズに動作する堅牢なレスポンシブWebデザインを実現した。
-  </p>
+    <hr class="section-break">
 
-  <h3>2.3 関連ページのデザイン・構造改善と一貫性の維持</h3>
-  <p>
-    メインページの開発完了後、作業範囲を拡張してその他のサブページのデザインやレイアウト構造を改善する作業を進行した。WordPressに基づいてページレイアウトを再構成し、ユーザーの利便性を最優先に考慮してコンテンツ配置と視覚的エレメントを修正した。
-  </p>
-  <ul class="timeline-list">
-    <li><b>ハイブリッド開発体制の確立：</b> 基本機能や精密なレスポンシブレイアウトはVS Codeでの手動コーディングで担保しつつ、補助的なデザイン案の試行や作業効率化にはAIツールを適用することで開発スピードを向上させた。</li>
-    <li><b>サイト全体の一貫性（Consistency）の担保：</b> 作業途中で修正箇所のプレビュー確認を細かく行い、フィードバックを即座に反映。全体のカラー体系、フォント規約、余白設定を調整し、サイト全体の完成度を高めた。</li>
-  </ul>
+    <h2>2. メインWebページの試行錯誤とレイアウト統合</h2>
+    <p>
+      リニューアル作業の推進にあたり、方向性の異なる2つのWebデザイン案を制作し、担当者に提示しました。提示後、双方のデザインに対する詳細な長所・短所のフィードバックを受領し、<b>「双方の長所を取り合わせ、1つの洗練された統合ページとして再開発すること」</b>というクライアント要請を頂きました。
+    </p>
+    <ul>
+        <li><b>デザインA案（ビジュアル重視）:</b> モダンで洗練されたヒーローセクションと動的ビジュアルが長所でしたが、下部コンテンツへの導線が弱いという短所がありました。</li>
+        <li><b>デザインB案（構造・情報重視）:</b> 高い視認性とカテゴリ分けされた明確な情報構造が長所でしたが、デザインが比較的硬いという指摘を受けました。</li>
+    </ul>
 
-  <h3>2.4 インデックス・ディレクトリページの自律企画とLocal WP環境でのデバッグ</h3>
-  <p>
-    既存Webサイトリニューアルの一環として、<b>インデックスページ（Index Page）およびディレクトリページ（Directory Page）のデザイン・構造改善実習</b>を実施した。別途の具体的なデザインシアンが用意されない状況下で、ユーザーの流れと情報構造を考慮し、セクション配置と視覚要素を自律的に企画・設計することが求められた。
-  </p>
+    <h3>AI導入の不具合とレスポンシブWebコードの完全再構築</h3>
+    <p>
+      2案のメリットを融合する作業において、作業の効率化を図るために<b>AIツールを活用したコードの自動合成・組み換え</b>を試みました。しかし、AIツールによって生成されたコードを適用した際、画面サイズに応じたレスポンシブ設計が意図通りに動作せず、表示崩れが発生する問題が生じました。
+    </p>
+    <blockquote>
+        <b>大変だった点：</b> 正直、この時はかなり焦りました。AIが生成したコードは一見完璧に見えましたが、実際に適用してみるとレイアウトが崩れ、どこから手をつけていいか分からず途方に暮れました。プロジェクトが遅延するのではないかと、大きなプレッシャーを感じました。
+    </blockquote>
+    <p>
+      部分的な修復では根本的解決が困難であったため、<b>自動生成されたコードを破棄し、VS Code上で一から手動でコードを再作成する決断</b>を行いました。
+    </p>
+    <blockquote>
+        <b>感じたこと：</b> 時間はかかりましたが、自分の手でコードを再構築することで、レスポンシブデザインの仕組みをより深く理解でき、大きな自信につながりました。この経験は、今後の開発者としてのキャリアにおいて大きな財産になったと感じています。
+    </blockquote>
+    <p>
+      手動による完全リライトを実施した結果、メディアクエリの構造をシンプルかつ厳密に再設計することができ、あらゆる端末においてスムーズに動作する堅牢なレスポンシB-Webデザインを実現しました。
+    </p>
+    
+    <h3>インデックス・ディレクトリページの自律企画とLocal WP環境でのデバッグ</h3>
+    <p>
+      共有検証サーバー上では即座にテスト・改変を行うことが困難であったインデックスページ等は、PCローカル環境に<b>「Local WP」</b>でWordpressテスト環境をゼロから構築することで解決しました。これにより、安全かつ迅速な改変・プレビュー環境を整備し、自律的に企画・設計を進めることができました。
+    </p>
 
-  <p>
-    これらのページはWordPressテーマファイルの内部構造に直接依存しており、共有検証サーバー（SilServer）上では即座にテスト・改変を行うことが困難であった。この技術的課題を乗り越えるため、以下の検証プロセスを構築した。
-  </p>
+    <hr class="section-break">
 
-  <div class="callout-box">
-    <div class="callout-title">【ローカル環境を活用したデバッグと検証フロー】</div>
-    <ol style="margin:0; padding-left:18px;">
-      <li><b>Local WordPress環境の構築：</b> PCローカル環境にWordpressテスト環境をゼロから構築し、テーマファイルの安全かつ迅速な改変・プレビュー環境を整備。</li>
-      <li><b>役割に応じたナビゲーション調整：</b> インデックスやディレクトリの役割に合わせ、コンテンツ露出方式とカテゴリナビゲーション構造を最適化。</li>
-      <li><b>反復的実験（Draft - Edit - Review）：</b> スタイル修正とコード改変の試行錯誤を繰り返し、機能的側面と視覚的完成度を高いレベルで調和させた。</li>
-    </ol>
-  </div>
+    <h2>3. 日本の消費文化及びサブカルチャー現場調査</h2>
+    <p>
+      Web開発プロジェクトの知見を広げるため、<b>新宿および秋葉原エリアにおける現地フィールドワーク</b>を実施しました。
+    </p>
+    <h3>新宿リユース店舗と秋葉原サブカルチャー巡回</h3>
+    <p>
+      新宿のブックオフでは、膨大な中古製品がカテゴリごとに高度に整理されており、欲しい情報（商品）へストレスなくアクセスできる構造が確立されていることに感銘を受けました。また、秋葉原では、各店舗がターゲット層に特化した陳列・演出を行っており、日本のサブカルチャーの力強さを直接体験しました。
+    </p>
+    <blockquote>
+        <b>感じたこと：</b> 開発だけでなく、実際に街に出てユーザーの行動を観察した経験は非常に新鮮でした。特に秋葉原の熱気はすごかったです。Webサイトを作る上でも、こうしたユーザーの心理や文化を理解することがいかに重要かを痛感しました。「膨大な情報を整理し、ユーザーの関心に合わせた最適な視覚的導線を構築する」というWebデザインの根本原理と共通するものを、日本の消費文化の中に発見できた気がします。
+    </blockquote>
 
-  <div class="page-break"></div>
+    <hr class="section-break">
 
-  <!-- SECTION 3 -->
-  <h2>3. 日本の消費文化及びサブカルチャー現場調査</h2>
-  <p>
-    Web開発プロジェクトの知見を広げ、日本国内のターゲットユーザー層における情報探索行動や空間的情報配置の傾向を理解するため、<b>新宿および秋葉原エリアにおける現地フィールドワーク</b>を実施した。
-  </p>
+    <h2>4. 総合成果と自己評価</h2>
+    <p>本インターンシップを通じて得られた主な成果とスキル習得状況です。</p>
+    <ul>
+        <li><b>WordPress・ローカル開発:</b> Local WP環境の構築、テーマファイル内部構造の理解とカスタマイズ力を獲得。</li>
+        <li><b>コーディング・トラブル対応:</b> AI生成コードによるレスポンシブ不全の原因特定と手動完全再構築を完遂。</li>
+        <li><b>開発手法（ハイブリッド化）:</b> AIに頼らない基礎能力の重要性を認識し、AIを適切に活用する指針を確立。</li>
+        <li><b>UI/UX・自律デザイン:</b> シアンのないページの自律企画。情報構造（IA）とユーザー動線を意識したレイアウト導出。</li>
+    </ul>
 
-  <h3>3.1 新宿リユース店舗（BOOKOFF等）の視察分析</h3>
-  <p>
-    新宿に位置する大型リユース店舗（ブックオフ等）を訪問し、多様な中古書籍、ゲームソフト、音楽アルバムなどの陳列・販売構造を調査した。
-  </p>
-  <ul>
-    <li><b>体系化された商品棚割とアクセシビリティ：</b> 中古製品でありながらカテゴリごとに極めて高度に整理されており、欲しい情報（商品）へストレスなくアクセスできる構造が確立されていた。</li>
-    <li><b>製品コンディションと納得感のある価格設定：</b> 中古品であっても状態が非常に良好であり、適切な品質管理と合理的な価格が消費者の購買意欲を高めている点を認めた。</li>
-  </ul>
-
-  <h3>3.2 秋葉原サブカルチャー・電子街巡回と消費者心理の理解</h3>
-  <p>
-    続いて秋葉原エリアに移動し、複数の専門ショップを巡りアニメグッズ、フィギュア、ゲーム、電子製品などを見学した。各店舗が取扱商品に応じた明確な特色とターゲット層に特化した陳列・演出を行っており、日本のサブカルチャーとリユース（二次流通）文化の力強さを直接体験した。
-  </p>
-  <p>
-    この実地体験を通じ、<b>「膨大な情報を整理し、ユーザーの関心に合わせた最適な視覚的導線を構築する」</b>というWebデザインの根本原理と共通する日本独自の消費文化の特徴を深く理解することができた。
-  </p>
-
-  <!-- SECTION 4 -->
-  <h2>4. 総合成果と自己評価</h2>
-
-  <h3>4.1 段階的成長と技術的成果</h3>
-  <p>
-    本インターンシップを通じて得られた主な成果とスキル習得状況を以下のマトリックスに集約する。
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">実習領域</th>
-        <th style="width: 75%;">具体的成果と習得スキル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>WordPress・ローカル開発</b></td>
-        <td>SilServerの制約を克服する Local WP環境の構築、テーマファイル内部構造の理解とカスタマイズ力の獲得。</td>
-      </tr>
-      <tr>
-        <td><b>コーディング・トラブル対応</b></td>
-        <td>VS Codeを活用した精密実装。AI生成コードによるレスポンシブ不全の原因特定と手動完全再構築の完遂。</td>
-      </tr>
-      <tr>
-        <td><b>開発手法（ハイブリッド化）</b></td>
-        <td>「AIに頼らない基礎能力」の検証を経て、AIをアイデア検討や作業効率化に絞って適用する適切な活用指針の確立。</td>
-      </tr>
-      <tr>
-        <td><b>UI/UX・自律デザイン</b></td>
-        <td>シアンのないインデックス/ディレクトリページの自律企画。情報構造（IA）とユーザー動線を意識したレイアウト導出。</td>
-      </tr>
-      <tr>
-        <td><b>定例検収・市場調査</b></td>
-        <td>担当者との定例フィードバックの迅速な反映。新宿・秋葉原視察を通じた日本消費文化のインサイト獲得。</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>4.2 総括及び今後の展望</h3>
-  <p>
-    本プロジェクトでは、クライアントの要件を高い満足度で満たすGlobal Human BridgeのWebリニューアルを完遂した。開発プロセスにおける「手動実装での基礎力の試行」から「AI導入での失敗と手動再構築」、AND「Local WPでの安全な実験デバッグ」という一連の体験は、技術的適応力と問題解決能力を飛躍的に向上させる貴重な糧となった。
-  </p>
-  <p>
-    今後は本実習で得た経験を活かし、構造的思考に基づいたWebデザイン・フロントエンド開発にさらに磨きをかけ、高品質なWebサービスの創出に貢献していく所存である。
-  </p>
-
-  <!-- Footer Signature -->
-  <div class="footer-signature">
-    <div class="signature-cell">
-      報告者: Web開発インターン生<br>
-      所属: Global Innovation Handle / Global Human Bridge プロジェクトチーム
-    </div>
-    <div class="signature-cell signature-right">
-      指導担当確認印: ___________________ (印)<br>
-      提出日: 2026年 8月 11日
-    </div>
-  </div>
-
+    <h3>総括及び今後の展望</h3>
+    <p>
+      本プロジェクトでは、クライアントの要件を満たすWebリニューアルを完遂することができました。開発プロセスにおける一連の体験は、技術的適応力と問題解決能力を飛躍的に向上させる貴重な糧となりました。
+    </p>
+    <p>
+      短い期間でしたが、本当に多くのことを学び、成長できたインターンシップでした。今後は本実習で得た経験を活かし、構造的思考に基づいたWebデザイン・フロントエンド開発にさらに磨きをかけ、高品質なWebサービスの創出に貢献していく所存です。最後まで読んでいただき、ありがとうございました。
+    </p>
 </div>
 
 </body>
