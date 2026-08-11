@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>일본 인턴십 업무 보고서</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="main_title">Global Innovation Handle 인턴십 업무 보고서</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
     <header class="main-header">
         <div class="logo">
-            <a href="#home" data-lang-key="logo_text">Internship Report</a>
+            <a href="#home" data-lang-key="logo_text">업무 보고서</a>
         </div>
         <nav class="main-nav">
             <ul>
@@ -20,129 +22,111 @@
                 <li><a href="#workflow" data-lang-key="nav_workflow">업무 일지</a></li>
                 <li><a href="#takeaways" data-lang-key="nav_takeaways">주요 경험</a></li>
                 <li><a href="#tech-stack" data-lang-key="nav_tech">기술 스택</a></li>
-                <li class="personal-nav-item"><a href="#personal" data-lang-key="nav_personal">개인적인 경험</a></li>
+                <li><a href="#personal" data-lang-key="nav_personal">개인적인 경험</a></li>
             </ul>
         </nav>
-        <div class="header-right">
+        <div class="header-utils">
             <div class="lang-switcher">
-                <button id="lang-ko" class="active" aria-pressed="true">KR</button>
-                <button id="lang-ja" aria-pressed="false">JP</button>
+                <button id="lang-ko" class="active" aria-pressed="true">KO</button>
+                <button id="lang-ja" aria-pressed="false">JA</button>
             </div>
-            <button class="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <button class="menu-toggle" aria-label="메뉴 열기/닫기">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </header>
 
-    <main class="container">
-        <section id="home" class="home-section">
-            <h1 data-lang-key="main_title">Global Innovation Handle 인턴십 업무 보고서</h1>
+    <main>
+        <!-- [세로 1] 홈 및 개요 -->
+        <section id="home" class="vertical-section">
+            <h1 class="glitch" data-text="[Performance Report]" data-lang-key="main_title">Global Innovation Handle 인턴십 업무 보고서</h1>
             <p class="subtitle" data-lang-key="main_subtitle">웹사이트 리뉴얼 프로젝트 경험을 중심으로</p>
         </section>
 
-        <section id="overview" class="section">
+        <section id="overview" class="vertical-section">
             <h2 data-lang-key="overview_title">인턴십 개요</h2>
-            <p data-lang-key="overview_p1">
-                본 보고서는 Global Innovation Handle 부서에서 진행한 인턴십의 업무 내용을 정리한 것입니다. 주된 업무는 자회사 'Global Human Bridge'의 노후화된 웹사이트를 리뉴얼하는 프로젝트였습니다. 개발에는 WordPress 플랫폼이 활용되었으며, VS Code를 사용하여 코딩을 진행했습니다.
-            </p>
+            <p data-lang-key="overview_p1">본 보고서는 Global Innovation Handle 부서에서 진행한 인턴십의 업무 내용을 정리한 것입니다. 주된 업무는 자회사 'Global Human Bridge'의 노후화된 웹사이트를 리뉴얼하는 프로젝트였습니다. 개발에는 WordPress 플랫폼이 활용되었으며, VS Code를 사용하여 코딩을 진행했습니다.</p>
         </section>
 
-        <section id="workflow" class="section">
-            <h2 data-lang-key="workflow_title">주요 업무 일지</h2>
-            <div class="timeline">
-                <!-- Phase 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 data-lang-key="wf1_title">1. 프로젝트 착수 및 초기 개발</h3>
-                        <p data-lang-key="wf1_desc">
-                            담당자로부터 회사에 대한 전반적인 설명을 듣고, 'Global Human Bridge' 웹사이트 리뉴얼 프로젝트에 착수했습니다. 초기에는 AI 사용 없이 개인의 실력을 점검하며 개발하는 데 중점을 두었고, 담당자의 정기적인 검수와 피드백을 반영하며 요구사항을 맞춰나갔습니다.
-                        </p>
+        <!-- [가로] 업무 일지 ~ 기술 스택 (GSAP 핀 고정 구역) -->
+        <div class="scroll-hint">
+            <span>Side Scroll</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5L19 12L12 19" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>                
+        </div>
+        <div class="horizontal-wrapper">
+            <div class="horizontal-content">
+                <section id="workflow" class="horizontal-panel">
+                    <h2 data-lang-key="workflow_title">주요 업무 일지</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 data-lang-key="wf1_title">1. 프로젝트 착수 및 초기 개발</h3>
+                            <p data-lang-key="wf1_desc">담당자로부터 회사에 대한 전반적인 설명을 듣고, 'Global Human Bridge' 웹사이트 리뉴얼 프로젝트에 착수했습니다. 초기에는 AI 사용 없이 개인의 실력을 점검하며 개발하는 데 중점을 두었고, 담당자의 정기적인 검수와 피드백을 반영하며 요구사항을 맞춰나갔습니다.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 data-lang-key="wf2_title">2. 피드백 반영 및 반복 개선</h3>
+                            <p data-lang-key="wf2_desc">두 가지 형태의 리뉴얼 시안을 제시했으나, 각각의 장단점에 대한 피드백을 받고 장점만을 통합한 단일 페이지로 개발하라는 요청을 받았습니다. 이 과정에서 AI를 활용해 두 시안의 장점을 합쳤지만, 반응형 설계 부분이 정상적으로 동작하지 않아 해당 코드를 직접 재작성하며 문제를 해결했습니다.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 data-lang-key="wf3_title">3. 확장 작업 및 자율적 디자인</h3>
+                            <p data-lang-key="wf3_desc">기존 리뉴얼 작업의 연장선으로, 인덱스 및 디렉토리 페이지의 디자인과 구조를 개선하는 과제를 받았습니다. 별도의 시안 없이 자율적으로 레이아웃을 기획하고 구성해야 했습니다. 사용자의 동선과 정보 구조를 고려하여 직접 섹션 배치와 시각 요소를 설계하고 수정하는 과정을 반복했습니다.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 data-lang-key="wf4_title">4. 로컬 개발 환경 구축</h3>
+                            <p data-lang-key="wf4_desc">작업 대상 페이지가 WordPress 테마 파일 내부에 있어 테스트 서버에서의 즉각적인 확인이 어려웠습니다. 이 문제를 해결하기 위해 로컬 머신에 WordPress 환경을 직접 구축하여 변경사항을 검토하고 디버깅을 진행함으로써 개발 효율을 높였습니다.</p>
+                        </div>
+                        <div class="timeline-item">
+                             <h3 data-lang-key="wf5_title">5. 추가 페이지 구조 개선 및 완료</h3>
+                            <p data-lang-key="wf5_desc">기존 웹사이트 리뉴얼 작업의 연장선으로, 다른 페이지의 디자인과 구조를 개선하는 작업을 진행했습니다. WordPress 기반으로 페이지 레이아웃을 재구성하고, 사용자 편의성을 고려해 콘텐츠 배치와 시각적 요소를 수정했습니다. 개발 과정에서는 VS Code로 필요한 기능과 스타일을 보완하고, AI 툴을 활용해 작업 효율을 높이며 디자인 시안을 신속하게 검토했습니다. 주기적인 수정 확인과 피드백 반영을 통해 페이지의 완성도를 높이고 사이트 전체와의 일관성을 확보했습니다.</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Phase 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 data-lang-key="wf2_title">2. 피드백 반영 및 반복 개선</h3>
-                        <p data-lang-key="wf2_desc">
-                           두 가지 형태의 리뉴얼 시안을 제시했으나, 각각의 장단점에 대한 피드백을 받고 장점만을 통합한 단일 페이지로 개발하라는 요청을 받았습니다. 이 과정에서 AI를 활용해 두 시안의 장점을 합쳤지만, 반응형 설계 부분이 정상적으로 동작하지 않아 해당 코드를 직접 재작성하며 문제를 해결했습니다.
-                        </p>
+                </section>
+                <section id="takeaways" class="horizontal-panel">
+                    <h2 data-lang-key="takeaways_title">주요 경험 및 제언</h2>
+                    <div class="card-container">
+                        <div class="card">
+                            <h3 data-lang-key="ta1_title">AI 활용과 기초의 중요성</h3>
+                            <p data-lang-key="ta1_desc">AI는 디자인 시안 조합이나 효율성 증대에 도움이 되지만, 반응형 웹과 같은 핵심 기능에서는 오류를 발생시킬 수 있습니다. AI가 생성한 코드를 맹신하기보다, 직접 분석하고 재작성할 수 있는 기초 코딩 능력이 필수적임을 깨달았습니다.</p>
+                        </div>
+                        <div class="card">
+                            <h3 data-lang-key="ta2_title">자율적 기획 및 설계 역량</h3>
+                            <p data-lang-key="ta2_desc">구체적인 시안 없이 '알아서 잘' 만들어보라는 요청은 스스로 기획하고 설계할 좋은 기회였습니다. 사용자 동선, 정보 구조 등을 스스로 고민하고 개선하는 과정을 통해 실무적인 디자인 역량을 기를 수 있었습니다.</p>
+                        </div>
+                         <div class="card">
+                            <h3 data-lang-key="ta3_title">로컬 환경 구축의 필요성</h3>
+                            <p data-lang-key="ta3_desc">테스트 서버의 제약사항을 극복하기 위해 Local WP 환경을 구축한 경험은 매우 중요했습니다. 다음 인턴은 입사 초기에 미리 로컬 환경을 세팅해두면 전체 개발 과정이 훨씬 수월해질 것입니다.</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Phase 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 data-lang-key="wf3_title">3. 확장 작업 및 자율적 디자인</h3>
-                        <p data-lang-key="wf3_desc">
-                            기존 리뉴얼 작업의 연장선으로, 인덱스 및 디렉토리 페이지의 디자인과 구조를 개선하는 과제를 받았습니다. 별도의 시안 없이 자율적으로 레이아웃을 기획하고 구성해야 했습니다. 사용자의 동선과 정보 구조를 고려하여 직접 섹션 배치와 시각 요소를 설계하고 수정하는 과정을 반복했습니다.
-                        </p>
+                </section>
+                <section id="tech-stack" class="horizontal-panel">
+                    <h2 data-lang-key="tech_title">사용한 기술 스택</h2>
+                    <div class="tech-badges">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>WordPress</span>
+                        <span>VS Code</span>
+                        <span>Local WP</span>
+                        <span>ChatGPT</span>
                     </div>
-                </div>
-                 <!-- Phase 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 data-lang-key="wf4_title">4. 로컬 개발 환경 구축</h3>
-                        <p data-lang-key="wf4_desc">
-                            작업 대상 페이지가 WordPress 테마 파일 내부에 있어 테스트 서버에서의 즉각적인 확인이 어려웠습니다. 이 문제를 해결하기 위해 로컬 머신에 WordPress 환경을 직접 구축하여 변경사항을 검토하고 디버깅을 진행함으로써 개발 효율을 높였습니다.
-                        </p>
-                    </div>
-                </div>
-                <!-- Phase 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 data-lang-key="wf5_title">5. 추가 페이지 구조 개선 및 완료</h3>
-                        <p data-lang-key="wf5_desc">
-                            기존 웹사이트 리뉴얼 작업의 연장선으로, 다른 페이지의 디자인과 구조를 개선하는 작업을 진행했습니다. WordPress 기반으로 페이지 레이아웃을 재구성하고, 사용자 편의성을 고려해 콘텐츠 배치와 시각적 요소를 수정했습니다. 개발 과정에서는 VS Code로 필요한 기능과 스타일을 보완하고, AI 툴을 활용해 작업 효율을 높이며 디자인 시안을 신속하게 검토했습니다. 주기적인 수정 확인과 피드백 반영을 통해 페이지의 완성도를 높이고 사이트 전체와의 일관성을 확보했습니다.
-                        </p>
-                    </div>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
 
-        <section id="takeaways" class="section">
-            <h2 data-lang-key="takeaways_title">주요 경험 및 제언</h2>
-            <div class="takeaway-grid">
-                <div class="takeaway-card">
-                    <h4 data-lang-key="ta1_title">AI 활용과 기초의 중요성</h4>
-                    <p data-lang-key="ta1_desc">AI는 디자인 시안 조합이나 효율성 증대에 도움이 되지만, 반응형 웹과 같은 핵심 기능에서는 오류를 발생시킬 수 있습니다. AI가 생성한 코드를 맹신하기보다, 직접 분석하고 재작성할 수 있는 기초 코딩 능력이 필수적임을 깨달았습니다.</p>
-                </div>
-                <div class="takeaway-card">
-                    <h4 data-lang-key="ta2_title">자율적 기획 및 설계 역량</h4>
-                    <p data-lang-key="ta2_desc">구체적인 시안 없이 "알아서 잘" 만들어보라는 요청은 스스로 기획하고 설계할 좋은 기회였습니다. 사용자 동선, 정보 구조 등을 스스로 고민하고 개선하는 과정을 통해 실무적인 디자인 역량을 기를 수 있었습니다.</p>
-                </div>
-                <div class="takeaway-card">
-                    <h4 data-lang-key="ta3_title">로컬 환경 구축의 필요성</h4>
-                    <p data-lang-key="ta3_desc">테스트 서버의 제약사항을 극복하기 위해 Local WP 환경을 구축한 경험은 매우 중요했습니다. 다음 인턴은 입사 초기에 미리 로컬 환경을 세팅해두면 전체 개발 과정이 훨씬 수월해질 것입니다.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tech-stack" class="section">
-            <h2 data-lang-key="tech_title">사용한 기술 스택</h2>
-            <div class="badge-container">
-                <span class="badge">WordPress</span>
-                <span class="badge">VS Code</span>
-                <span class="badge">HTML5</span>
-                <span class="badge">CSS3</span>
-                <span class="badge">JavaScript</span>
-                <span class="badge">Local WP</span>
-                <span class="badge">AI-Assisted Coding</span>
-            </div>
-        </section>
-
-        <section id="personal" class="section">
+        <!-- [세로 2] 개인적인 경험 및 푸터 -->
+        <section id="personal" class="vertical-section">
             <h2 data-lang-key="personal_title">일본 문화 체험</h2>
-            <p data-lang-key="personal_desc">
-                업무 외적으로 신주쿠의 북오프나 아키하바라의 상점들을 방문하여 일본의 서브컬처와 중고 유통 문화를 체험했습니다. 다양한 상품이 체계적으로 관리되는 모습과 합리적인 가격 설정을 통해, 일본 소비 문화에 대한 이해를 높이는 기회가 되었습니다.
-            </p>
+            <p data-lang-key="personal_desc">업무 외적으로 신주쿠의 북오프나 아키하바라의 상점들을 방문하여 일본의 서브컬처와 중고 유통 문화를 체험했습니다. 다양한 상품이 체계적으로 관리되는 모습과 합리적인 가격 설정을 통해, 일본 소비 문화에 대한 이해를 높이는 기회가 되었습니다.</p>
         </section>
     </main>
 
     <footer class="footer">
         <p data-lang-key="footer_text">&copy; 2026 Internship Report for Global Innovation Handle.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
