@@ -9,6 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <div class="fx-strobe" aria-hidden="true"></div>
+    <div class="fx-scanlines" aria-hidden="true"></div>
+    <div class="fx-vignette" aria-hidden="true"></div>
+    <div class="fx-beam" aria-hidden="true"></div>
     <div class="progress-bar-container">
         <div class="progress-bar"></div>
     </div>
@@ -40,9 +44,11 @@
 
     <main>
         <!-- [세로 1] 홈 및 개요 -->
-        <section id="home" class="vertical-section">
-            <h1 class="glitch" data-text="[Performance Report]" data-lang-key="main_title">Global Innovation Handle 인턴십 업무 보고서</h1>
-            <p class="subtitle" data-lang-key="main_subtitle">웹사이트 리뉴얼 프로젝트 경험을 중심으로</p>
+        <section id="home" class="vertical-section hero-section">
+            <span class="hero-eyebrow" data-lang-key="hero_eyebrow">2026 SUMMER INTERNSHIP</span>
+            <h1 class="glitch" data-text="[Performance Report]" data-lang-key="main_title">인턴십 업무 보고서</h1>
+            <p class="hero-meta" data-lang-key="hero_meta">컴퓨터공학과 4학년 · Global Innovation Handle 웹 개발 인턴 · 2026.06 – 2026.07</p>
+            <p class="subtitle" data-lang-key="main_subtitle">'Global Human Bridge' 웹사이트 리뉴얼 프로젝트에 참여하며 배우고 느낀 점을 정리했습니다.</p>
         </section>
 
         <section id="overview" class="vertical-section">
@@ -124,8 +130,17 @@
 
         <!-- [세로 2] 개인적인 경험 및 푸터 -->
         <section id="personal" class="vertical-section">
-            <h2 data-lang-key="personal_title">일본 문화 체험</h2>
-            <p data-lang-key="personal_desc">업무 외적으로 신주쿠의 북오프나 아키하바라의 상점들을 방문하여 일본의 서브컬처와 중고 유통 문화를 체험했습니다. 다양한 상품이 체계적으로 관리되는 모습과 합리적인 가격 설정을 통해, 일본 소비 문화에 대한 이해를 높이는 기회가 되었습니다.</p>
+            <h2 data-lang-key="personal_title">일본 생활과 문화 체험</h2>
+            <p data-lang-key="personal_desc">업무 외적으로는 신주쿠의 북오프와 아키하바라의 여러 상점을 둘러보며 일본의 서브컬처와 중고 유통 문화를 직접 경험했습니다. 방대한 양의 상품이 상태별로 세심하게 분류되고 합리적인 가격으로 유통되는 모습을 보면서, 자원을 순환시키는 일본 특유의 소비 문화를 이해할 수 있었습니다.</p>
+            <p data-lang-key="personal_desc2">주말에는 요코하마와 가마쿠라로 당일치기 여행을 다녀오며 도쿄 근교의 다양한 풍경을 눈에 담았고, 여름 시즌에 열린 스미다가와 불꽃축제를 현지 주민들 틈에서 직접 즐기기도 했습니다. 퇴근 후 동료들과 이자카야에 들러 이야기를 나누는 과정에서 시간 약속을 철저히 지키고 상대를 배려하는 일본 특유의 커뮤니케이션 방식을 몸으로 느낄 수 있었고, 서툴렀던 일본어 실력도 실생활 속에서 부딪혀 가며 조금씩 늘려나갈 수 있었던 6주였습니다.</p>
+            <div class="culture-badges">
+                <span data-lang-key="cb1">신주쿠 북오프</span>
+                <span data-lang-key="cb2">아키하바라</span>
+                <span data-lang-key="cb3">요코하마 당일치기</span>
+                <span data-lang-key="cb4">가마쿠라</span>
+                <span data-lang-key="cb5">스미다가와 불꽃축제</span>
+                <span data-lang-key="cb6">퇴근 후 이자카야</span>
+            </div>
         </section>
     </main>
 

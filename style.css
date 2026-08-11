@@ -156,23 +156,39 @@ body {
     border-right: none;
 }
 
-.home-section {
+/* --- Hero (#home): eyebrow / title / meta / subtitle --- */
+.hero-section {
     align-items: flex-start;
     text-align: left;
+    gap: 2px;
 }
 
-.home-section h1 {
+.hero-eyebrow {
+    display: inline-block;
+    width: fit-content;
     font-family: 'Roboto Mono', monospace;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color-subtle);
+    border-radius: 999px;
+    padding: 6px 16px;
+    margin-bottom: 16px;
+}
+
+.hero-section h1 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(2rem, 5vw, 3.2rem);
     color: var(--heading-color);
     font-weight: 700;
-    margin: 20px 0 10px 0;
+    margin: 4px 0 10px 0;
     line-height: 1.2;
     position: relative; /* For the cursor */
 }
 
 /* Blinking Cursor Effect */
-.home-section h1.typewriter::after {
+.hero-section h1.typewriter::after {
     content: '|';
     position: absolute;
     right: -20px;
@@ -185,10 +201,19 @@ body {
     50% { color: var(--primary-color); }
 }
 
-.home-section .subtitle {
-    font-size: 1.2rem;
+.hero-meta {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--subtle-text-color);
+    letter-spacing: 0.02em;
+    margin: 0 0 4px 0;
+}
+
+.hero-section .subtitle {
+    font-size: 1.15rem;
     color: var(--primary-color);
     max-width: 700px;
+    margin-top: 10px;
 }
 
 h2 {
@@ -327,6 +352,37 @@ h2::before {
 .tech-badges span:nth-child(7) { animation-delay: 1.2s; }
 
 
+/* --- Culture Badges (Japan-life section) --- */
+.culture-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 28px;
+}
+
+.culture-badges span {
+    display: inline-flex;
+    align-items: center;
+    background: var(--card-background);
+    color: var(--primary-color);
+    padding: 0.45rem 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color-subtle);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.culture-badges span:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+#personal p + p {
+    margin-top: 14px;
+}
+
+
 /* --- Footer --- */
 .footer {
     text-align: center;
@@ -423,6 +479,10 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 800px; /* Limit text width */
+    margin: 0 auto; /* Center the section */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text within the section */
 }
 
 /* GSAP 가로 스크롤 래퍼 및 콘텐츠 - These might be redundant if using the other naming convention. Consolidating is good. */
@@ -441,7 +501,7 @@ html, body {
 .horizontal-panel {
     width: auto;
     height: 100vh;
-    padding: 100px 80px 50px;
+    padding: 150px 80px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -582,5 +642,136 @@ h1.glitch {
         min-height: 100vh; /* Ensure they still take up space */
         border-right: none;
         border-bottom: 1px solid var(--card-background);
+    }
+}
+
+/* =========================================================
+   Full-Screen Impact Effects (horizontal-scroll track only)
+   ========================================================= */
+
+/* 1) Power-off / reboot strobe — full-viewport blackout that
+      flickers on like a fluorescent tube kicking in. */
+.fx-strobe {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fx-strobe.play {
+    animation: fx-strobe-pass 0.7s steps(1, end) forwards;
+}
+
+@keyframes fx-strobe-pass {
+    0%   { opacity: 1;    background: #000; }
+    14%  { opacity: 1;    background: #000; }
+    24%  { opacity: 0.92; background: var(--primary-color); }
+    34%  { opacity: 0.08; background: #000; }
+    46%  { opacity: 0.85; background: var(--primary-color); }
+    56%  { opacity: 0.05; background: #000; }
+    70%  { opacity: 0.45; background: var(--primary-color); }
+    100% { opacity: 0;    background: #000; }
+}
+
+/* 2) Edge vignette impact — neon light rushes in from the
+      viewport's outer edge and compresses toward the center. */
+.fx-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 2300;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 0 var(--glow-color);
+}
+
+/* 3) CRT scanlines + flicker noise — active for the whole
+      horizontal-scroll track, like a HUD screen being operated. */
+.fx-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 2400;
+    opacity: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(230, 241, 255, 0.05) 0px,
+        rgba(230, 241, 255, 0.05) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    mix-blend-mode: overlay;
+    transition: opacity 0.6s ease;
+}
+
+.fx-scanlines::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background-image: radial-gradient(rgba(0, 255, 155, 0.6) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    opacity: 0;
+    mix-blend-mode: screen;
+}
+
+body.crt-active .fx-scanlines {
+    opacity: 1;
+}
+
+body.crt-active .fx-scanlines::after {
+    animation: fx-noise-flicker 0.12s steps(2, end) infinite;
+}
+
+@keyframes fx-noise-flicker {
+    0%   { transform: translate(0, 0);     opacity: 0.03; }
+    50%  { transform: translate(-1px, 1px); opacity: 0.09; }
+    100% { transform: translate(1px, -1px); opacity: 0.04; }
+}
+
+/* 4) Laser scan beam — sweeps top-to-bottom on panel change. */
+.fx-beam {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    z-index: 2450;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    box-shadow: 0 0 25px 6px var(--glow-color);
+}
+
+.fx-beam.play {
+    animation: fx-beam-pass 0.5s ease-in forwards;
+}
+
+@keyframes fx-beam-pass {
+    0%   { transform: translateY(-20px); opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* 5) Global phase transition — while the horizontal track is
+      pinned, the whole page shifts to a darker, cooler phase. */
+body {
+    transition: background-color 0.6s ease;
+}
+
+body.phase-dark {
+    --background-color: #050b16;
+    --card-background: #0c1c33;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fx-strobe.play,
+    .fx-beam.play,
+    body.crt-active .fx-scanlines::after {
+        animation: none !important;
+    }
+    .fx-strobe, .fx-vignette, .fx-beam, .fx-scanlines {
+        display: none !important;
     }
 }
