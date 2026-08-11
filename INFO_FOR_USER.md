@@ -1,0 +1,1 @@
+I have created an `images` directory. Please add the map image you want to use at `images/tokyo_map.png`. I will now proceed with the implementation assuming that file exists.
