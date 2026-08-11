@@ -5,8 +5,10 @@
       --card-background: #112240; /* Lighter Navy */
       --text-color: #ccd6f6; /* Light Slate */
       --heading-color: #e6f1ff; /* White */
+      --subtle-text-color: #8892b0; /* Slate Gray for footer/meta */
       --border-color: #00ff9b;
       --shadow-color: rgba(2, 12, 27, 0.7);
+      --glow-color: rgba(0, 255, 155, 0.5);
     }
 
     body {
@@ -18,12 +20,61 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
+    /* --- Accessibility & Reduced Motion --- */
+    :focus-visible {
+      outline: 3px solid var(--primary-color);
+      outline-offset: 3px;
+      border-radius: 4px; /* Optional: to match element rounding */
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* --- Header & Metadata --- */
+    .header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+    }
     
+    .system-meta {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8em;
+      color: var(--subtle-text-color);
+      background-color: var(--card-background);
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 40px;
+      text-align: left;
+      border: 1px solid #1a2c4e;
+    }
+    .system-meta p {
+      margin: 0;
+      line-height: 1.5;
+    }
+    .system-meta .log-line::before {
+      content: '>> ';
+      color: var(--primary-color);
+    }
+
     .lang-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
     }
 
     .lang-switcher button {
@@ -31,7 +82,6 @@
       border: 1px solid var(--primary-color);
       color: var(--primary-color);
       padding: 8px 15px;
-      margin-left: 10px;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Roboto Mono', monospace;
@@ -42,22 +92,13 @@
     .lang-switcher button.active {
       background: var(--primary-color);
       color: var(--background-color);
+      box-shadow: 0 0 15px var(--glow-color);
     }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-
+    
     .header h1 {
       font-family: 'Roboto Mono', monospace;
-      font-size: 3em;
+      /* Using clamp for responsive font size */
+      font-size: clamp(2.2rem, 5vw, 3rem);
       color: var(--heading-color);
       font-weight: 700;
       margin: 0 0 10px 0;
@@ -70,18 +111,24 @@
       max-width: 700px;
       margin: 10px auto 0;
     }
-
+    
+    /* --- Section & Animation --- */
     .section {
       background: var(--card-background);
-      padding: 30px 40px;
+      /* Responsive padding */
+      padding: clamp(20px, 5vw, 40px);
       margin-bottom: 40px;
       border-radius: 8px;
       border-left: 4px solid var(--primary-color);
       box-shadow: 0 10px 30px -15px var(--shadow-color);
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    
+    /* JS will add this class to trigger animation */
+    .fade-in-up-init {
       opacity: 0;
       transform: translateY(20px);
-      animation: initial-noop 1s .5s both;
+      animation: fade-in-up 1s forwards;
     }
 
     .section:hover {
@@ -89,7 +136,6 @@
       box-shadow: 0 20px 40px -15px var(--shadow-color);
     }
     
-    @keyframes initial-noop { from, to {} }
     @keyframes fade-in-up {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -97,7 +143,7 @@
 
     h2 {
       font-family: 'Roboto Mono', monospace;
-      font-size: 1.8em;
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
       font-weight: 700;
       color: var(--heading-color);
       margin: 0 0 30px 0;
@@ -120,13 +166,38 @@
       margin-bottom: 15px;
     }
     
-    .log-entry {
-        margin-bottom: 40px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #1a2c4e;
+    /* --- Timeline for Log Entries --- */
+    .timeline {
+        position: relative;
     }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        background-color: #1a2c4e;
+    }
+    
+    .log-entry {
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 40px; /* Space for the timeline dot */
+    }
+    .log-entry::before {
+        content: '';
+        position: absolute;
+        left: 4px; /* (Connector left - dot width/2) + connector width/2 */
+        top: 8px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: 2px solid var(--card-background);
+    }
+    
     .log-entry:last-child {
-        border-bottom: none;
         margin-bottom: 0;
     }
 
@@ -143,7 +214,7 @@
     blockquote {
       margin: 25px 0;
       padding: 20px;
-      background-color: #0a192f;
+      background-color: var(--background-color); /* Darker background */
       border-left: 4px solid var(--primary-color);
       border-radius: 4px;
       font-size: 1.05em;
@@ -167,7 +238,10 @@
       font-weight: 400;
       transition: all 0.3s ease;
     }
-    .badge:hover { background-color: rgba(0, 255, 155, 0.1); }
+    .badge:hover {
+        background-color: rgba(0, 255, 155, 0.1);
+        box-shadow: 0 0 10px var(--glow-color);
+    }
     strong, b { color: var(--primary-color); font-weight: 700; }
 
     .skill-card-container {
@@ -177,13 +251,16 @@
         margin-top: 30px;
     }
     .skill-card {
-        background: #0a192f;
+        background: var(--background-color); /* Darker background */
         padding: 20px;
         border-radius: 6px;
         border: 1px solid #1a2c4e;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .skill-card:hover { transform: translateY(-5px); }
+    .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px var(--glow-color);
+    }
     .skill-card h4 {
         margin: 0 0 10px 0;
         color: var(--heading-color);
@@ -195,7 +272,23 @@
     .footer {
       text-align: center;
       padding: 40px 20px;
-      color: #8892b0;
+      color: var(--subtle-text-color);
       font-family: 'Roboto Mono', monospace;
       font-size: 0.9em;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 480px) {
+      .container {
+        padding: 40px 15px;
+      }
+      .header {
+        margin-bottom: 60px;
+      }
+      .section {
+        margin-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
     }
